@@ -1,0 +1,158 @@
+import 'package:flutter/material.dart';
+
+class SecondPage extends StatefulWidget {
+  const SecondPage({super.key});
+
+  @override
+  State<SecondPage> createState() => _SecondPageState();
+}
+
+TextEditingController controller = TextEditingController();
+
+class _SecondPageState extends State<SecondPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: const Color.fromARGB(255, 209, 209, 209),
+        appBar: AppBar(
+          leading: Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/giken.png'),
+                    fit: BoxFit.contain)),
+          ),
+          title: Text("Maintenance Integrated Technology Solution",
+              style: TextStyle(color: Colors.white, fontSize: 13)),
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    const Color.fromARGB(255, 28, 128, 117),
+                    const Color.fromARGB(255, 0, 238, 255)
+                  ],
+                  begin: FractionalOffset.centerLeft,
+                  end: FractionalOffset.centerRight,
+                ),
+                image: DecorationImage(
+                    image: AssetImage('assets/patern_a.png'),
+                    fit: BoxFit.none,
+                    repeat: ImageRepeat.repeat)),
+          ),
+        ),
+        body: Stack(children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 209, 209, 209),
+                Color.fromARGB(255, 209, 209, 209),
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            )),
+            // margin: EdgeInsets.all(5),
+          ),
+          Center(
+            child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.90,
+                height: MediaQuery.of(context).size.height * 0.85,
+                child: Card(
+                  elevation: 10,
+                  child: Stack(
+                    children: <Widget>[
+                      Opacity(
+                        opacity: 0.4,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(4),
+                              image: DecorationImage(
+                                image: AssetImage('assets/patern_engineer.png'),
+                                fit: BoxFit.contain,
+                                repeat: ImageRepeat.repeat,
+                              )),
+                        ),
+                      ),
+                      Container(
+                        // margin: EdgeInsets.all(10),
+                        // padding: EdgeInsets.all(5),
+                        height: MediaQuery.of(context).size.height * 0.35,
+                        width: MediaQuery.of(context).size.width * 1,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(4),
+                            topRight: Radius.circular(4),
+                          ),
+                          image: DecorationImage(
+                              image: AssetImage('assets/mesin_satu.jpg'),
+                              fit: BoxFit.cover),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(
+                            20,
+                            50 + MediaQuery.of(context).size.height * 0.30,
+                            20,
+                            20),
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: <Widget>[
+                              Text(
+                                "PT. Giken Dynamika Indonesia",
+                                maxLines: 2,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.blueAccent,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                "That focuses in the fields of Industrial & Plant Engineering, Special Purpose Machinery, Process Automation & Instrumentation, Robotics & IoT, Metalworking and Electro Deposition Painting",
+                                maxLines: 4,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: const Color.fromARGB(255, 0, 13, 95),
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(20),
+                                      fillColor: const Color.fromARGB(
+                                          137, 189, 233, 222),
+                                      filled: true,
+                                      prefixIcon: Icon(Icons.person),
+                                      labelText: "masukan id ",
+                                      prefixStyle: TextStyle(
+                                          color: Colors.blueAccent,
+                                          fontWeight: FontWeight.w600),
+                                      border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(5))),
+                                  onChanged: (bufferString) {
+                                    setState(() {});
+                                  },
+                                  controller: controller,
+                                ),
+                              ),
+                              Text(controller.text),
+                              ElevatedButton(
+                                  child: Text("Back to Main Page"),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  })
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                )),
+          )
+        ]));
+  }
+}
