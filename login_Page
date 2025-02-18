@@ -1,0 +1,206 @@
+import 'package:flutter/material.dart';
+import 'package:mits_00/main_page.dart';
+
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+TextEditingController controller = TextEditingController();
+
+class _LoginPageState extends State<LoginPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Stack(children: <Widget>[
+      Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+          colors: [
+            Color.fromARGB(255, 209, 209, 209),
+            Color.fromARGB(255, 209, 209, 209),
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        )),
+        // margin: EdgeInsets.all(5),
+      ),
+      Center(
+        child: SizedBox(
+            width: MediaQuery.of(context).size.width * 0.90,
+            height: MediaQuery.of(context).size.height * 0.85,
+            child: Card(
+              elevation: 10,
+              child: Stack(
+                children: <Widget>[
+                  Opacity(
+                    opacity: 0.4,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          image: DecorationImage(
+                            image: AssetImage('assets/patern_engineer.png'),
+                            fit: BoxFit.contain,
+                            repeat: ImageRepeat.repeat,
+                          )),
+                    ),
+                  ),
+                  Container(
+                    // margin: EdgeInsets.all(10),
+                    // padding: EdgeInsets.all(5),
+                    height: MediaQuery.of(context).size.height * 0.35,
+                    width: MediaQuery.of(context).size.width * 1,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(4),
+                        topRight: Radius.circular(4),
+                      ),
+                      image: DecorationImage(
+                          image: AssetImage('assets/mesin_satu.jpg'),
+                          fit: BoxFit.cover),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(20,
+                        50 + MediaQuery.of(context).size.height * 0.30, 20, 50),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            "PT. Giken Dynamika Indonesia",
+                            maxLines: 2,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.blueAccent,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "That focuses in the fields of Industrial & Plant Engineering, Special Purpose Machinery, Process Automation & Instrumentation, Robotics & IoT, Metalworking and Electro Deposition Painting",
+                            maxLines: 4,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: const Color.fromARGB(255, 0, 13, 95),
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(controller.text),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: ListView(
+                      children: <Widget>[
+                        Container(
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(color: Colors.grey),
+                              borderRadius: BorderRadius.circular(5)),
+                          margin: EdgeInsets.fromLTRB(20,
+                              MediaQuery.of(context).size.height * 0.5, 20, 0),
+                          padding: EdgeInsets.fromLTRB(10, 0, 10, 20),
+                          child: Column(
+                            children: <Widget>[
+                              TextField(
+                                decoration: InputDecoration(
+                                  icon: Icon(Icons.email,
+                                      color:
+                                          const Color.fromARGB(255, 178, 1, 1)),
+                                  focusedBorder: UnderlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.black45)),
+                                  labelText: "Email :  ",
+                                ),
+                              ),
+                              TextField(
+                                obscureText: true,
+                                decoration: InputDecoration(
+                                  icon: Icon(Icons.vpn_key,
+                                      color:
+                                          const Color.fromARGB(255, 178, 1, 1)),
+                                  focusedBorder: UnderlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.black45)),
+                                  labelText: "Pass :  ",
+                                ),
+                              ),
+                              Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Container(
+                                      margin: EdgeInsets.fromLTRB(0, 2, 5, 2),
+                                      child: Text(
+                                        "Forgot Password ?",
+                                        style: TextStyle(color: Colors.black54),
+                                      ))),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(20, 5, 20, 30),
+                          child: Row(
+                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.amberAccent,
+                                      foregroundColor: Colors.black87),
+                                  onPressed: () {
+                                    Navigator.pushReplacement(context,
+                                        MaterialPageRoute(builder: (context) {
+                                      return MainPage();
+                                    }));
+                                  },
+                                  child: Text(
+                                    "Sign In",
+                                    style: TextStyle(color: Colors.black),
+                                  )),
+                              Spacer(flex: 2),
+                              FloatingActionButton(
+                                  onPressed: () {},
+                                  mini: true,
+                                  elevation: 2,
+                                  child: Image(
+                                    image:
+                                        AssetImage('assets/login_facebook.png'),
+                                  )),
+                              Spacer(
+                                flex: 1,
+                              ),
+                              FloatingActionButton(
+                                  onPressed: () {},
+                                  mini: true,
+                                  elevation: 2,
+                                  child: Image(
+                                    image: AssetImage('assets/google.png'),
+                                  )),
+                            ],
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              "Don't Have An Account ?  ",
+                              style: TextStyle(
+                                  fontSize: 11,
+                                  color: const Color.fromARGB(255, 97, 97, 97),
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Text("Sign Up", style: TextStyle(fontSize: 11,color: const Color.fromARGB(255, 221, 136, 0), fontWeight: FontWeight.w900),)
+                          ],
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            )),
+      )
+    ]));
+  }
+}
