@@ -1,0 +1,82 @@
+import 'package:flutter/material.dart';
+import 'package:mits_00/second_page.dart';
+
+class MainPage extends StatelessWidget {
+  const MainPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 209, 209, 209),
+      appBar: AppBar(
+        leading: Container(
+          width: 50,
+          height: 50,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/giken.png'), fit: BoxFit.contain)),
+        ),
+        title: Text(
+          "Integrated Solution",
+          style: TextStyle(color: Colors.white, fontSize: 15),
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.exit_to_app),
+            onPressed: () {},
+          )
+        ],
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  const Color.fromARGB(255, 28, 128, 117),
+                  const Color.fromARGB(255, 0, 238, 255)
+                ],
+                begin: FractionalOffset.centerLeft,
+                end: FractionalOffset.centerRight,
+              ),
+              image: DecorationImage(
+                  image: AssetImage('assets/patern_a.png'),
+                  fit: BoxFit.none,
+                  repeat: ImageRepeat.repeat)),
+        ),
+      ),
+      body: Container(
+        margin: EdgeInsets.all(10),
+
+        child: ListView(
+          children: <Widget>[
+            buildCard(Icons.account_circle, "Akun Pengguna"),
+            buildCard(Icons.handyman_rounded, "Maintenance Schedulle"),
+            buildCard(Icons.analytics, "Monitoring Overall Equipment Effectiveness"),
+            buildCard(Icons.hourglass_bottom, "Monitoring Progress Pekerjaan"),
+            ElevatedButton(
+                child: Text("Go To Second Page"),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return SecondPage();
+                  }));
+                })
+          ],
+        ),
+      ),
+    );
+  }
+
+  Card buildCard(IconData iconData, String descCard) {
+    return Card(
+      elevation: 5,
+      child: Row(
+        children: <Widget>[
+          Container(margin: EdgeInsets.all(5), child: Icon(iconData, color: Colors.deepOrange,)),
+          Text(descCard)
+        ],
+      ),
+    );
+  }
+}
